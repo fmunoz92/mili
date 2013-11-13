@@ -1,6 +1,7 @@
 {
     "name": "fmunoz92/mili",
     "type": "library",
+    "license": "MIT",
     "description": "base for internal projects",    
     "require": {
         "doctrine/orm": "2.3.4",

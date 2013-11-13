@@ -21,12 +21,12 @@ function getDir($dir)
 }
 
 $config = Config::singleton();
-$dir = getDir(backDir(backDir(__DIR__)));
+$dir = getDir(backDir(backDir(backDir(backDir(__DIR__)))));
 $config->set('root', $dir);
 
 function inrootabsolute($url)
 {
-    $root = backDir(backDir(__DIR__));
+    $root = backDir(backDir(backDir(backDir(__DIR__))));
     if(!empty($url))
     {
       if($url[0] == "/")
