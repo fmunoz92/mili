@@ -79,7 +79,8 @@ abstract class Controller
         header('Content-Type: text/html');
         $smarty = new Smarty();
         
-        $root = inrootabsolute("/app/views/");
+        $config = Config::singleton();
+        $root = $config->get('rootAbsolute')."/app/views/";
 
         /* Set config */
         $smarty->template_dir = $root;

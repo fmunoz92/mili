@@ -1,58 +1,12 @@
 <?php
 
-function primerBarra($dir)
-{
-  $origlen = strlen($dir);
-  $i = $origlen - 1;
-  while($dir[$i] !== '/')
-    $i--;
-  return $i;
-}
-
-function backDir($dir)
-{
-  return substr($dir, 0, primerBarra($dir));
-}
-
-function getDir($dir)
-{
-  $len = strlen($dir) - primerBarra($dir);;
-  return substr($dir, -$len);
-}
-
 $config = Config::singleton();
-$dir = getDir(backDir(backDir(backDir(backDir(__DIR__)))));
-$config->set('root', $dir);
+$dir = dirname(dirname(dirname(dirname(__DIR__))));
 
-function inrootabsolute($url)
-{
-    $root = backDir(backDir(backDir(backDir(__DIR__))));
-    if(!empty($url))
-    {
-      if($url[0] == "/")
-        return $root.$url;
-      else
-        return $root."/".$url;
-    }
-    else
-      return $root."/".$url;
-}
-
-function inroot($url)
-{
-    global $config;
-    $root = $config->get('root');
-    if(!empty($url))
-    {
-      if($url[0] == "/")
-        return $root.$url;
-      else
-        return $root."/".$url;
-    }
-    else
-      return $root."/".$url;
-}
-
+$base = dirname($dir);
+$root = str_replace($base, '', $dir);
+$config->set('rootAbsolute', $dir);
+$config->set('root', $root);
 
 class Router extends \Slim\Slim
 {

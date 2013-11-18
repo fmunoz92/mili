@@ -21,6 +21,9 @@ class Translator {
         return self::$instance;
     }
 
+    public static function load() {
+    }
+
     private $lang = array();
 
     private function findString($str,$lang) {
