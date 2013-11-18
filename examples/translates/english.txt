@@ -1,0 +1,3 @@
+Hola=Hi %s
+Chau=Bye %s
+Market Publication=Market Publication
