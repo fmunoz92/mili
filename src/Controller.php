@@ -87,6 +87,7 @@ abstract class Controller
         $smarty->compile_dir  = $root .'templates_c/';
         $smarty->config_dir   = $root .'configs/';
         $smarty->cache_dir    = $root .'cache/';
+        $smarty->plugins_dir = $root . 'customplugins/';
 
         /* Assign smarty vars */
         foreach($this->data as $name => $value)
