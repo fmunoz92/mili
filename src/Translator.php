@@ -48,7 +48,10 @@ class Translator {
                     $this->lang[$lang][$v[0]] = $v[1];
                 }
                 
-                return $this->findString($str, $lang);
+                if(isset($this->lang[$lang]))
+                    return $this->findString($str, $lang);
+                else 
+                    return $str;
             }
             else {
                 return $str;
