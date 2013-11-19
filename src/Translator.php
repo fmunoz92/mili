@@ -39,14 +39,15 @@ class Translator {
 
     public function get($str, $lang) {
         if (!array_key_exists($lang, $this->lang)) {
-            if (file_exists($lang.'.txt')) {
-                $strings = array_map(array($this,'splitStrings'),file(Config::get("translateDir").$lang.'.txt'));
-                //print_r($strings);
+
+            $config = Config::singleton();
+            if (file_exists($config->get("translateDir").$lang.'.txt')) {
+                $strings = array_map(array($this,'splitStrings'),file($config->get("translateDir").$lang.'.txt'));
+
                 foreach ($strings as $k => $v) {
                     $this->lang[$lang][$v[0]] = $v[1];
                 }
                 
-                //print_r($this->lang);die("0");
                 return $this->findString($str, $lang);
             }
             else {
